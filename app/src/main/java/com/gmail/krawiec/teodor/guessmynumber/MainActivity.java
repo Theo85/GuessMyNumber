@@ -127,5 +127,6 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
         textView4.setText(sharedPreferences.getString("GuessList", "error"));
         textView5.setText("Last guess was: ");
+    //save me
     }
 }
