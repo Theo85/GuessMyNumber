@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -107,14 +108,18 @@ public class MainActivity extends AppCompatActivity {
         if (Integer.parseInt(editText2.getText().toString()) == sharedPreferences.getInt("NumberRange", 100)){
             displayMassage("The range remains not changed.");
         } else {
-            if (!editText2.getText().toString().equals("") && !editText2.getText().toString().equals("0")) {
-                numberRange = Integer.parseInt(editText2.getText().toString());
-                editor.putInt("NumberRange", numberRange);
-                newGameCode();
-                resetBestScoreCode();
-            } else {
+            if (editText2.getText().toString().equals("0")) {
                 editText2.setText(sharedPreferences.getInt("NumberRange", 100) + "");
                 displayMassage("Enter number higher than 0.");
+            } else if (TextUtils.isEmpty(editText2.getText())){ //do rozwiązania
+                editText2.setText(sharedPreferences.getInt("NumberRange", 100) + "");
+                displayMassage("No number provided.");
+            } else {
+                numberRange = Integer.parseInt(editText2.getText().toString());
+                editor.putInt("NumberRange", numberRange);
+                displayMassage("Number range set to: " + numberRange);
+                newGameCode();
+                resetBestScoreCode();
             }
         }
     }
