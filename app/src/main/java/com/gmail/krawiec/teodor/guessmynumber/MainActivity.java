@@ -105,22 +105,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void setCustomRange(View view) {
         EditText editText2 = (EditText) findViewById(R.id.editText2);
-        if (Integer.parseInt(editText2.getText().toString()) == sharedPreferences.getInt("NumberRange", 100)){
+        if (editText2.getText().toString().equals(sharedPreferences.getInt("NumberRange", 100) + "")){
             displayMassage("The range remains not changed.");
-        } else {
-            if (editText2.getText().toString().equals("0")) {
+        } else if (editText2.getText().toString().equals("0")) {
                 editText2.setText(sharedPreferences.getInt("NumberRange", 100) + "");
                 displayMassage("Enter number higher than 0.");
-            } else if (TextUtils.isEmpty(editText2.getText())){ //do rozwiązania
-                editText2.setText(sharedPreferences.getInt("NumberRange", 100) + "");
-                displayMassage("No number provided.");
-            } else {
-                numberRange = Integer.parseInt(editText2.getText().toString());
-                editor.putInt("NumberRange", numberRange);
-                displayMassage("Number range set to: " + numberRange);
-                newGameCode();
-                resetBestScoreCode();
-            }
+        } else if (editText2.getText().toString().isEmpty()){ //do rozwiązania
+            editText2.setText(sharedPreferences.getInt("NumberRange", 100) + "");
+            displayMassage("No number provided.");
+        } else {
+            numberRange = Integer.parseInt(editText2.getText().toString());
+            editor.putInt("NumberRange", numberRange);
+            displayMassage("Number range set to: " + numberRange);
+            newGameCode();
+            resetBestScoreCode();
         }
     }
 
