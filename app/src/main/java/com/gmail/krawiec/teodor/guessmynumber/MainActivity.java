@@ -47,13 +47,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void takeTheGuess(View view) {
         EditText editText = (EditText) findViewById(R.id.editText);
-        if (gameWon){
+        if (gameWon) {
             displayMassage("It is time to start new game.");
             editText.setText(null);
         } else {
             if (editText.getText().toString().equals("")) {
                 displayMassage("No number provided.");
-            } else if (Integer.parseInt(editText.getText().toString()) == 0 || Integer.parseInt(editText.getText().toString()) > sharedPreferences.getInt("NumberRange",100)){
+            } else if (Integer.parseInt(editText.getText().toString()) == 0 || Integer.parseInt(editText.getText().toString()) > sharedPreferences.getInt("NumberRange", 100)) {
                 displayMassage("Number out of range.");
                 editText.setText(null);
             } else {
@@ -105,12 +105,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void setCustomRange(View view) {
         EditText editText2 = (EditText) findViewById(R.id.editText2);
-        if (editText2.getText().toString().equals(sharedPreferences.getInt("NumberRange", 100) + "")){
+        if (editText2.getText().toString().equals(sharedPreferences.getInt("NumberRange", 100) + "")) {
             displayMassage("The range remains not changed.");
         } else if (editText2.getText().toString().equals("0")) {
-                editText2.setText(sharedPreferences.getInt("NumberRange", 100) + "");
-                displayMassage("Enter number higher than 0.");
-        } else if (editText2.getText().toString().isEmpty()){ //do rozwiązania
+            editText2.setText(sharedPreferences.getInt("NumberRange", 100) + "");
+            displayMassage("Enter number higher than 0.");
+        } else if (editText2.getText().toString().isEmpty()) { //do rozwiązania
             editText2.setText(sharedPreferences.getInt("NumberRange", 100) + "");
             displayMassage("No number provided.");
         } else {
@@ -139,7 +139,8 @@ public class MainActivity extends AppCompatActivity {
         textView4.setText(sharedPreferences.getString("GuessList", "error"));
         textView5.setText("Last guess was: ");
     }
-    public void displayMassage(String massage){
+
+    public void displayMassage(String massage) {
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, massage, duration);
