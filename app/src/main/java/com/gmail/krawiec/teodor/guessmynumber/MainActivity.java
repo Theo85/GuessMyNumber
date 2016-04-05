@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             displayMassage("It is time to start new game.");
             editText.setText(null);
         } else {
-            if (editText.getText().toString().equals("")) {
+            if (editText.getText().toString().isEmpty()) {
                 displayMassage("No number provided.");
             } else if (Integer.parseInt(editText.getText().toString()) == 0 || Integer.parseInt(editText.getText().toString()) > sharedPreferences.getInt("NumberRange", 100)) {
                 displayMassage("Number out of range.");
