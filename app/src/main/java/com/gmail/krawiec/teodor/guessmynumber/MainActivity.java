@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (editText2.getText().toString().equals("0")) {
             editText2.setText(sharedPreferences.getInt("NumberRange", 100) + "");
             displayMassage("Enter number higher than 0.");
-        } else if (editText2.getText().toString().isEmpty()) { //do rozwiązania
+        } else if (editText2.getText().toString().isEmpty()) {
             editText2.setText(sharedPreferences.getInt("NumberRange", 100) + "");
             displayMassage("No number provided.");
         } else {
